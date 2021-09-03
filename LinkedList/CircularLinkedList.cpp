@@ -32,7 +32,7 @@ class CircularLinkedList{
     void pushHead(int data){
         //add node
         Node *newptr = new Node();
-        Node *ptr = Head     ,,,n.nm;
+        Node *ptr = Head;
 
         newptr->data = data;
         if(Head->next==NULL){
