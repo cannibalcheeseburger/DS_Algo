@@ -1,6 +1,6 @@
 #include<iostream>
 #define PARENT(x) int(x/2)
-#define LEFT(X) 2*x +1
+#define LEFT(x) 2*x +1
 #define RIGHT(x) 2*x +2
 using namespace std;
 const int num = 10;
@@ -16,12 +16,11 @@ class Heap{
 
     Heap(int* a,int n){
         last = 0;
-        arr = a;
-        /*for(;last<num && last<n;last++){
-            arr[last]=a[last];
-            heapify(last);
+        for(int i =0;i<n;i++,last++) arr[i]=a[i];
+        for(int i =last/2-1;i>=0;i--){
+            heapify(i);
         }
-        */
+        
     }
 
     void insert(int i){
@@ -34,11 +33,21 @@ class Heap{
     }
 
     void heapify(int i ){
-        int l = LEFT(i);
         int r = RIGHT(i);
-
-        if(l<last)
+        int l = LEFT(i);
+        int largest = i;
+        if(l<last && arr[l]>arr[largest]){
+            largest = l;
+        }
+        if(r<last && arr[r]>arr[largest]){
+            largest = r;
+        }
+        if(largest!=i){
+            swap(arr[largest],arr[i]);
+            heapify(largest);
+        }
     }
+
 
     void print(){
         for(int i =0;i<last;i++){
@@ -62,6 +71,7 @@ int main(){
     const int n=5;
     int arr[n]={10,20,15,30,40};
     Heap heap(arr,n);
-    heap.print();
+    //heap.print();
+    heap.heapsort();
     return 0;
 }

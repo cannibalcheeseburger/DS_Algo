@@ -60,9 +60,7 @@ class LinkedList{
         }
         newptr->data = data;
         ptr->next = newptr;
-
     }
-
 
     void popTail(){
         Node *ptr=Head;
